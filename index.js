@@ -36,10 +36,19 @@ client.on('message', (message) => {
     return message.reply('안녕하세요');
   }
 
-  if(message.content == '날씨알려줘') {
-    return message.reply('아직 준비중이에요');
-  }
+  client.on('message', (message) => {
+    if(message.author.bot) return;
+  
+    if(message.content == '날씨') {
+      return message.reply('아직 준비중이에요');
+    }
 
+    client.on('message', (message) => {
+      if(message.author.bot) return;
+    
+      if(message.content == '알겠어') {
+        return message.reply('네');
+      }
   if(message.content == 'embed') {
     let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     let embed = new Discord.RichEmbed()
